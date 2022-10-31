@@ -10,7 +10,11 @@ import Footer from "./components/Footer";
 
 // import pages
 import Home from "./pages/Home";
-import PropertyDetails from "./pages/PropertyDetails"
+import ForSale from "./pages/ForSale";
+import ForRent from "./pages/ForRent";
+import Residences from "./pages/Residences";
+import PropertyManagement from "./pages/PropertyManagement";
+import AboutUs from "./pages/AboutUs";
 
 
 const App = () => {
@@ -19,7 +23,11 @@ const App = () => {
     <Header />
     <Routes>
        <Route path="/" element={<Home />} />
-       <Route path="/property/:id" element={<PropertyDetails />} />
+       <Route path="/pages/forsale" element={<ForSale />} />
+       <Route path="/pages/forrent" element={<ForRent />} />
+       <Route path="/pages/residences" element={<Residences />} />
+       <Route path="/pages/property-management" element={<PropertyManagement />} />
+       <Route path="/pages/about-us" element={<AboutUs />} />
      </Routes>
     <Footer />
   </div>
