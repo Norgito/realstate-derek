@@ -6,4 +6,4 @@ const PropertyDropdown = () => {
   )
 }
 
-export default PropertyDropdown;
+export default PropertyDropdown

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const ForSale = () => {
   return (
-    <div>HOUSES FOR SALE</div>
-  )
-}
+      <div>HOUSES FOR SALE</div>
+  );
+};
 
-export default ForSale
+export default ForSale;
