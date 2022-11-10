@@ -6,7 +6,7 @@ import ItemListContainer from "../components/ItemListContainer";
 
 function Home() {
   return (
-    <div className="min-h-[1800] ">
+    <div className=" ">
       <Banner />
       <div className="flex gap-3 flex-wrap">
         <ItemListContainer />

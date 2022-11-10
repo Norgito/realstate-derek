@@ -20,20 +20,20 @@ import CreateContainer from "./pages/CreateContainer";
 const App = () => {
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Header />
-        <div className="max-w-[1440px] mx-auto bg-white">
+        <div className="">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/pages/forsale" element={<ForSale />} />
-            <Route path="/pages/forrent" element={<ForRent />} />
-            <Route path="/pages/residences" element={<Residences />} />
+            <Route path="forsale" element={<ForSale />} />
+            <Route path="forrent" element={<ForRent />} />
+            <Route path="residences" element={<Residences />} />
             <Route
-              path="/pages/property-management"
+              path="property-management"
               element={<PropertyManagement />}
             />
-            <Route path="/pages/about-us" element={<AboutUs />} />
-            <Route path="/pages/createItem" element={<CreateContainer />} />
+            <Route path="about-us" element={<AboutUs />} />
+            <Route path="createContainer" element={<CreateContainer />} />
           </Routes>
           <Footer />
         </div>
