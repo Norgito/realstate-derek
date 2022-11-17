@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 
 // import components
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+//import Footer from "./components/Footer";
 
 // import pages
 import Home from "./pages/Home";
@@ -22,7 +22,7 @@ const App = () => {
     <>
       <AnimatePresence exitBeforeEnter>
         <Header />
-        <div className="">
+        <div className="lg:p-24 md:p-24 p-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="forsale" element={<ForSale />} />
@@ -35,8 +35,9 @@ const App = () => {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="createContainer" element={<CreateContainer />} />
           </Routes>
-          <Footer />
-        </div>
+          </div>
+          
+        
       </AnimatePresence>
     </>
   );

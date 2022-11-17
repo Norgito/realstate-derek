@@ -23,7 +23,7 @@ const Header = () => {
 
   const [{ user }, dispatch] = useStateValue();
 
-  const [isMenu, setisMenu] = useState(false);
+  const [isMenu, setIsMenu] = useState(false);
 
   const login = async () => {
     if (!user) {
@@ -36,24 +36,34 @@ const Header = () => {
       });
       localStorage.setItem("user", JSON.stringify(providerData[0]));
     } else {
-      setisMenu(!isMenu);
+      setIsMenu(!isMenu);
     }
   };
 
+  const logout = async () => {
+    setIsMenu(false)
+    localStorage.clear()
+
+    dispatch({
+      type: actionType.SET_USER,
+      user: null,
+    });
+  }
+
   return (
-    <header className="fixed z-50 w-screen p-5 px-4 md:p-2 md:px-16 bg-bgTransparent">
-      <div className="hidden md:flex w-full h-full items-center justify-between">
+    <header className="fixed z-50 min-w-full p-3 px-4 md:p-2 md:px-16 bg-bgTransparent">
+      <div className="hidden md:flex flex-wrap w-full h-full items-center justify-between px-12">
         <Link to={"/"} className="flex items-center gap-2">
-          <img src={Logo} className=" object-cover" alt="logo" />
+          <img src={Logo} className=" object-cover w-30" alt="logo" />
         </Link>
 
         {/* navbar links */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6  ">
           <motion.ul
             initial={{ opacity: 0, y: 200 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 200 }}
-            className="flex items-center gap-8"
+            className="flex items-center gap-20 "
           >
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               For Sale
@@ -104,8 +114,7 @@ const Header = () => {
               whileTap={{ scale: 0.6 }}
               onClick={login}
               src={user ? user.photoURL : Avatar}
-              alt="userprofile"
-              className="text-2xl shadow-2xl w-7 cursor-pointer rounded-full"
+              className="text-xs shadow-2xl w-7 cursor-pointer rounded-full"
             />
             {isMenu && (
               <motion.div
@@ -116,12 +125,16 @@ const Header = () => {
               >
                 {user && user.email === "tito.cubanito@gmail.com" && (
                   <Link to={"createContainer"}>
-                    <p className="py-1 flex items-center justify-center gap-2 cursor-pointer hover:bg-blue-300 rounded-lg">
+                    <p className="py-1 flex items-center justify-center gap-2 cursor-pointer hover:bg-blue-300 rounded-lg"
+                    onClick={() => setIsMenu(false)}
+                    >
                       Add Item <MdAdd />
                     </p>
                   </Link>
                 )}
-                <p className="py-1 flex items-center justify-center gap-2 cursor-pointer hover:bg-blue-300 rounded-lg">
+                <p className="py-1 flex items-center justify-center gap-2 cursor-pointer hover:bg-blue-100 rounded-lg"
+                  onClick={logout}
+                >
                   Logout <MdLogout />
                 </p>
               </motion.div>
@@ -132,7 +145,7 @@ const Header = () => {
       {/* mobile */}
       <div className="flex items-center justify-between md:hidden w-full h-full">
         <Link to="/" className="flex items-center gap-2">
-          <img src={Logo} alt="logo" className="w-20" />
+          <img src={Logo} alt="logo" className="w-24" />
         </Link>
 
         {/* Social Media */}
@@ -141,8 +154,7 @@ const Header = () => {
             whileTap={{ scale: 0.6 }}
             onClick={login}
             src={user ? user.photoURL : Avatar}
-            alt="userprofile"
-            className="text-2xl shadow-2xl w-9 cursor-pointer rounded-full mr-3"
+            className="shadow-2xl w-10 cursor-pointer rounded-full mr-3 border-2 border-blue-400"
           />
           {isMenu && (
             <motion.div
@@ -153,31 +165,43 @@ const Header = () => {
             >
               {user && user.email === "tito.cubanito@gmail.com" && (
                 <Link to={"createContainer"}>
-                  <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-blue-300 rounded-lg">
+                  <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-blue-300 ">
                     Add Item <MdAdd />
                   </p>
                 </Link>
               )}
 
               <ul className="flex flex-col ">
-                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300 rounded-lg px-4 py-2">
+                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300  px-4 py-2"
+                onClick={() => setIsMenu(false)}
+                >
                   For Sale
                 </li>
-                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300 rounded-lg px-4 py-2">
+                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300  px-4 py-2"
+                onClick={() => setIsMenu(false)}
+                >
                   For Rent
                 </li>
-                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300 rounded-lg px-4 py-2">
+                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300  px-4 py-2"
+                onClick={() => setIsMenu(false)}
+                >
                   Residences
                 </li>
-                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300 rounded-lg px-4 py-2">
+                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300  px-4 py-2"
+                onClick={() => setIsMenu(false)}
+                >
                   Property M.
                 </li>
-                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-blue-300 rounded-lg px-4 py-2">
+                <li className="text-base text-textColor duration-100 transition-all ease-in-out cursor-pointer  hover:bg-blue-300  px-4 py-2"
+                onClick={() => setIsMenu(false)}
+                >
                   About Us
                 </li>
               </ul>
 
-              <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-blue-300 rounded-lg">
+              <p className="m-2 p-2 rounded-md shadow-lg flex items-center gap-3 bg-gray-200 cursor-pointer hover:bg-blue-500  justify-center"
+              onClick={logout}
+              >
                 Logout <MdLogout />
               </p>
             </motion.div>

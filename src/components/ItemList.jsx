@@ -7,8 +7,10 @@ const Itemlist = ({ items }) => {
       {items.length > 0 ? (
         items.map((item) => <Item key={item.id} item={item} id={item.id} />)
       ) : (
-        <>
-            <p>LOADING</p>
+          <>
+            <div className="flex justify-center items-center text-center">
+              <p>LOADING</p>
+            </div>
         </>
       )}
     </>

@@ -6,12 +6,14 @@ import ItemListContainer from "../components/ItemListContainer";
 
 function Home() {
   return (
-    <div className=" ">
+
+    <div className="min-w-screen-lg h-auto flex flex-col">
       <Banner />
-      <div className="flex gap-3 flex-wrap">
+      <div className='p-10 grid grid-cols-1 md:grid-cols-4 gap-2'>
         <ItemListContainer />
       </div>
-    </div>
+  </div> 
+  
   );
 }
 
